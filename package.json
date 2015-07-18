@@ -1,0 +1,35 @@
+{
+  "name": "twitter-sentiment-analysis",
+  "version": "0.1.0",
+  "description": "A novice's implementation of Twitter Sentiment Analysis with NodeJS, MongoDB (with Mongoose), sentiment, twitter API",
+  "main": "index.js",
+  "dependencies": {
+    "mongodb": "^2.0.39",
+    "mongoose": "^4.0.7",
+    "speakeasy-nlp": "^0.2.2",
+    "twitter": "^1.2.5",
+    "sentiment": "^1.0.2",
+    "bson": "^0.4.8",
+    "sails": "^0.11.0",
+    "natural": "^0.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vishwajeetv/twitter-sentiment-analysis.git"
+  },
+  "keywords": [
+    "twitter",
+    "sentiment",
+    "nlp"
+  ],
+  "author": "Vishwajeet Vatharkar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vishwajeetv/twitter-sentiment-analysis/issues"
+  },
+  "homepage": "https://github.com/vishwajeetv/twitter-sentiment-analysis#readme"
+}
