@@ -18,15 +18,6 @@ var config = require('./config.json');
 
 var client = new Twitter(config);
 
-var params = {screen_name: 'vishwajeetv'};
-client.get('statuses/user_timeline', params, function(error, tweets, response){
-    if (!error) {
-        console.log(tweets.length);
-            tweets.forEach(function(tweet){
-
-            });
-    }
-});
 
 db.once('open', function (callback) {
 
@@ -38,14 +29,31 @@ db.once('open', function (callback) {
 
     var Tweets = mongoose.model('Tweet', tweetSchema);
 
-    Tweets.find(function (err, tweets) {
-        if (err) return console.error(err);
+    var params = {screen_name: 'vishwajeetv'};
+    var params = { q: 'Eid Mubarak', count: 100};
+    var params = { q: '#indvszim', count: 100};
+    var params = { q: 'Remove Sushma', count: 100};
 
-        tweets.forEach(function(tweet){
+    client.get('search/tweets/', params, function(error, tweets, response){
+        if (!error) {
 
-            tweet['sentiment'] = sentiment(tweet.text);
-            tweet.save();
+            statuses = tweets.statuses;
+            console.log(statuses.length);
+            statuses.forEach(function(tweet){
 
-        })
-    })
+                var sentimentAnalyzed = sentiment(tweet.text);
+
+                Tweets.update( {id : tweet.id} , {id: tweet.id, text: tweet.text, sentiment: sentimentAnalyzed},{upsert:true},
+                    function()
+                    {
+                    });
+            });
+        }
+        else{
+            console.log(error);
+        }
+    });
+
+
+
 });

@@ -4,14 +4,15 @@
   "description": "A novice's implementation of Twitter Sentiment Analysis with NodeJS, MongoDB (with Mongoose), sentiment, twitter API",
   "main": "index.js",
   "dependencies": {
+    "bson": "^0.4.8",
     "mongodb": "^2.0.39",
     "mongoose": "^4.0.7",
-    "speakeasy-nlp": "^0.2.2",
-    "twitter": "^1.2.5",
-    "sentiment": "^1.0.2",
-    "bson": "^0.4.8",
+    "natural": "^0.2.1",
     "sails": "^0.11.0",
-    "natural": "^0.2.1"
+    "sails-mongo": "^0.11.2",
+    "sentiment": "^1.0.2",
+    "speakeasy-nlp": "^0.2.2",
+    "twitter": "^1.2.5"
   },
   "devDependencies": {},
   "scripts": {
