@@ -8,7 +8,9 @@
 module.exports = {
 
   attributes: {
-
+    id : { type: 'string'},
+    text: { type:'string' },
+    sentiment: { type: 'json' }
   },
     tableName : "tweets"
 };
