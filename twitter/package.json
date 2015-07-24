@@ -1,5 +1,5 @@
 {
-  "name": "twitter",
+  "name": "twitter-app",
   "private": true,
   "version": "0.0.0",
   "description": "a Sails application",
@@ -22,7 +22,8 @@
     "rc": "~0.5.0",
     "sails": "~0.11.0",
     "sails-disk": "~0.10.0",
-    "sails-mongo": "^0.11.2"
+    "sails-mongo": "^0.11.2",
+    "twitter": "^1.2.5"
   },
   "scripts": {
     "debug": "node debug app.js",
