@@ -9,7 +9,7 @@ module.exports = {
 
     getAnalyzedTweets: function (req, res) {
 
-       tweets =  TwitterService.getTweets().then(function(tweets){
+       tweets =  TwitterService.getTweets( req.param('search')).then(function(tweets){
            return res.json({
                tweets : SentimentAnalysisService.analyze(tweets)
            });
