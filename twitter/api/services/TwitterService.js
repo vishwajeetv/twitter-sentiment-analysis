@@ -5,7 +5,7 @@
 module.exports = {
 
 
-    getTweets: function(parameters) {
+    getTweets: function(searchText) {
 
         var Promise = require('bluebird');
 
@@ -18,10 +18,9 @@ module.exports = {
 
         var Twitter = require('twitter');
         var client = new Twitter(config);
-
-        var params = { q: 'Eid Mubarak', count: 100};
-        var params = { q: '#indvszim', count: 100};
-        var params = { q: 'Remove Sushma', count: 100};
+        
+        //var params = { q: '#indvszim', count: 100};
+        var params = { q: searchText, count: 100};
 
         var tweets;
 
