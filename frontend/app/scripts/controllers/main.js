@@ -15,9 +15,9 @@ angular.module('twitterAppApp')
       $scope.negativeCount = 0;
       $scope.totalScore = 0;
       $scope.numberOfTweets = 0;
-      $scope.getTweets = function()
+      $scope.search = function(searchText)
       {
-        TwitterProvider.getTweets().then(
+        TwitterProvider.getTweets(searchText).then(
             function( tweets )
             {
               $scope.tweets = tweets;
@@ -34,7 +34,7 @@ angular.module('twitterAppApp')
 
       function init()
       {
-        $scope.getTweets();
+
       }
 
       init();
