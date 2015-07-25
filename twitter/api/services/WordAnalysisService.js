@@ -103,13 +103,7 @@ module.exports = {
                             allWords.push(word[0]);
                         }
                     }
-
-
             });
-                //tweet.sentiment.tokens.forEach(function (token) {
-                //
-                //    allWords.push(token);
-                //})
 
             });
 

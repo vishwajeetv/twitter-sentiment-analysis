@@ -20,13 +20,19 @@ module.exports = {
         var totalScore = 0;
         var averageScore = 0;
         var numberOfTweets = tweets.length;
+        var numberOfSentimentalTweets = 0;
         tweets.forEach(function(tweet)
         {
-            totalScore = totalScore + tweet.sentiment.score;
+            if(tweet.sentiment.score != 0) //skiping neutral tweets
+            {
+                numberOfSentimentalTweets++;
+                totalScore = totalScore + tweet.sentiment.score;
+            }
         });
-        averageScore = totalScore/numberOfTweets;
+        averageScore = totalScore/numberOfSentimentalTweets;
         var analysis = {
             numberOfTweets : numberOfTweets,
+            numberOfSentimentalTweets: numberOfSentimentalTweets,
             averageScore : averageScore,
             totalScore : totalScore
         }
