@@ -2,6 +2,46 @@
  * Created by vishwajeetv on 25/07/15.
  */
 
+function analyzeCount(words) {
+
+    if (words.length == 0) {
+        return null;
+    }
+    var wordAnalysis = {};
+    words.forEach(function (word) {
+        var hasMatch = false;
+
+        function checkMatch(element, index, words) {
+            return word == element;
+        }
+
+        hasMatch = words.some(checkMatch);
+
+        if (hasMatch) {
+            if (wordAnalysis[word]) {
+                wordAnalysis[word] = wordAnalysis[word] + 1;
+            }
+            else {
+                wordAnalysis[word] = 1;
+            }
+
+        }
+    });
+    var results = [];
+    for (var key in wordAnalysis) {
+        if (wordAnalysis.hasOwnProperty(key)) {
+            results.push(
+                {
+                    word: key, appearances: wordAnalysis[key]
+                }
+            )
+        }
+    }
+    wordAnalysis = results;
+
+    return wordAnalysis;
+}
+
 module.exports = {
 
     countSentimentalWords: function(tweets) {
@@ -16,7 +56,7 @@ module.exports = {
                 })
 
             }
-            if(tweet.sentiment.negative.length >= 1) {
+            if(tweet.sentiment. negative.length >= 1) {
 
                 tweet.sentiment.negative.forEach(function (negativeWord) {
                     negativeWords.push(negativeWord);
@@ -28,44 +68,23 @@ module.exports = {
 
         return allWordAnalysis;
 
-        function analyzeCount(words) {
 
-            if (words.length == 0) {
-                return null;
-            }
-            var wordAnalysis = {};
-            words.forEach(function (word) {
-                var hasMatch = false;
 
-                function checkMatch(element, index, words) {
-                    return word == element;
-                }
+},
 
-                hasMatch = words.some(checkMatch);
+    countAllWords : function(tweets){
 
-                if (hasMatch) {
-                    if (wordAnalysis[word]) {
-                        wordAnalysis[word] = wordAnalysis[word] + 1;
-                    }
-                    else {
-                        wordAnalysis[word] = 1;
-                    }
+        var allWords = [];
+        tweets.forEach(function(tweet){
+                tweet.sentiment.tokens.forEach(function (token) {
+                    allWords.push(token);
+                })
 
-                }
             });
-            var results = [];
-            for (var key in wordAnalysis) {
-                if (wordAnalysis.hasOwnProperty(key)) {
-                    results.push(
-                        {
-                            word: key, appearances: wordAnalysis[key]
-                        }
-                    )
-                }
-            }
-            wordAnalysis = results;
 
-            return wordAnalysis;
+        var allWordsAnalysis = analyzeCount(allWords)
+
+        return allWordsAnalysis;
         }
-}
+
 };
