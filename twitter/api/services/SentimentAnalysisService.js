@@ -14,5 +14,24 @@ module.exports = {
         });
         return tweets;
 
+    },
+
+    analyzeAll: function(tweets){
+        var totalScore = 0;
+        var averageScore = 0;
+        var numberOfTweets = tweets.length;
+        tweets.forEach(function(tweet)
+        {
+            totalScore = totalScore + tweet.sentiment.score;
+        });
+        averageScore = totalScore/numberOfTweets;
+        var analysis = {
+            numberOfTweets : numberOfTweets,
+            averageScore : averageScore,
+            totalScore : totalScore
+        }
+        return analysis;
     }
+
+
 };
