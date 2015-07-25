@@ -53,7 +53,7 @@ angular.module('twitterAppApp')
 
       function init()
       {
-            //$scope.getTrends(1);
+            $scope.getTrends(1);
       }
 
       init();
