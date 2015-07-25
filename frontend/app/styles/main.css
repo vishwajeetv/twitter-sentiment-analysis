@@ -62,7 +62,7 @@ body {
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 730px;
+    max-width: 1024px;
   }
 
   /* Remove the padding we set earlier */
@@ -74,7 +74,7 @@ body {
   }
   /* Space out the masthead */
   .header {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
@@ -85,4 +85,8 @@ body {
 .trend{
     margin-top: 2px;
     margin-bottom : 2px;
+}
+.verticalMargined{
+  margin-top: 5px;
+  margin-bottom : 5px;
 }
