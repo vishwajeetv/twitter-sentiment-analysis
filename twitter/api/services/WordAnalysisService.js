@@ -4,6 +4,7 @@
 
 function analyzeCount(words) {
 
+    var natural = require('natural');
     if (words.length == 0) {
         return null;
     }
@@ -12,7 +13,7 @@ function analyzeCount(words) {
         var hasMatch = false;
 
         function checkMatch(element, index, words) {
-            return word == element;
+            return  natural.JaroWinklerDistance(word,element) > 0.8;
         }
 
         hasMatch = words.some(checkMatch);
@@ -37,7 +38,18 @@ function analyzeCount(words) {
             )
         }
     }
-    wordAnalysis = results;
+    wordAnalysis = results.sort(
+       function (a, b) {
+            if (a.appearances > b.appearances) {
+                return -1;
+            }
+            if (a.appearances < b.appearances) {
+                return 1;
+            }
+            // a must be equal to b
+            return 0;
+        }
+    );
 
     return wordAnalysis;
 }
