@@ -30,18 +30,11 @@ angular.module('twitterAppApp')
             TwitterProvider.getTweets(searchText).then(
             function( tweetsData )
             {
-              $scope.tweets = tweetsData.tweets;
                 $scope.sentimentalWordsAnalysis = tweetsData.sentimentalWordsAnalysis;
                 $scope.allWordsAnalysis = tweetsData.allWordsAnalysis;
-              $scope.numberOfTweets = tweetsData.tweets.length;
-              var totalScore = 0;
-              $scope.tweets.forEach(function(tweet)
-              {
-                    totalScore = totalScore + tweet.sentiment.score;
-              });
-
-              $scope.totalScore = totalScore;
-                $scope.averageScore = totalScore/tweetsData.tweets.length;
+              $scope.numberOfTweets = tweetsData.overallAnalysis.numberOfTweets;
+            $scope.totalScore = tweetsData.overallAnalysis.totalScore;
+                $scope.averageScore = tweetsData.overallAnalysis.averageScore;
             }
         )
       }
