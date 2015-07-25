@@ -20,7 +20,8 @@ module.exports = {
                 getTweets();
                 return response.json({
                     tweets: tweets,
-                    wordAnalysis : WordAnalysisService.countSentimentalWords(tweets)
+                    sentimentalWordsAnalysis : WordAnalysisService.countSentimentalWords(tweets),
+                    allWordsAnalysis : WordAnalysisService.countAllWords(tweets)
                 });
             }
             else
