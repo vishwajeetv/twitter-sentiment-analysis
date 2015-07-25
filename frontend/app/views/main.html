@@ -1,6 +1,41 @@
-<input class="form-control input-lg" ng-model="searchText"><br>
-<button class="btn btn-lg btn-primary" ng-click="search(searchText)">Search</button>
+
+<div class="btn-group">
+    <span ng-repeat="trend in trends">
+
+        <button type="button" class="trend btn btn-sm btn-primary" ng-click="setSearchText(trend.query)"> {{trend.name}}</button>
+        </span>
+</div>
 <br><br>
+<div class="form-group form-input-element">
+
+    <div class="col-sm-8">
+
+        <input class="form-control input-lg"  placeholder="Search Query"
+               ng-model="searchText">
+
+
+    </div>
+    <div class="col-sm-4">
+        <button class="btn btn-lg btn-primary" ng-click="search(searchText)">Search</button>
+    </div>
+</div>
+<br>
+<hr>
+
 Number of tweets : {{numberOfTweets}}
 <br>
 Total score : {{totalScore}}
+<br>
+Average score : {{averageScore}}
+<hr>
+Top Positive Words :
+<span ng-repeat="positiveWord in wordAnalysis.positive | orderBy : word.appearances | limitTo : 5">
+   <h3 style="display: inline"> <span class="trends label label-success"> {{positiveWord.word}} </span> &nbsp; </h3>
+</span>
+<hr>
+Top negative Words :
+<span ng-repeat="negativeWord in wordAnalysis.negative | orderBy : negativeWord.appearances | limitTo : 5">
+    <h3 style="display: inline"> <span class="trends label label-danger"> {{negativeWord.word}} </span> &nbsp;</h3>
+</span>
+
+<hr>
