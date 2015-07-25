@@ -31,7 +31,8 @@ angular.module('twitterAppApp')
             function( tweetsData )
             {
               $scope.tweets = tweetsData.tweets;
-                $scope.wordAnalysis = tweetsData.wordAnalysis;
+                $scope.sentimentalWordsAnalysis = tweetsData.sentimentalWordsAnalysis;
+                $scope.allWordsAnalysis = tweetsData.allWordsAnalysis;
               $scope.numberOfTweets = tweetsData.tweets.length;
               var totalScore = 0;
               $scope.tweets.forEach(function(tweet)

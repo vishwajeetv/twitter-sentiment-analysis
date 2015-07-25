@@ -28,13 +28,19 @@ Total score : {{totalScore}}
 <br>
 Average score : {{averageScore}}
 <hr>
+Top  Words :
+<span ng-repeat="word in allWordsAnalysis | orderBy : word.appearances | limitTo : 5">
+    <h3 style="display: inline"> <span class="trends label label-info"> {{word.word}} </span> &nbsp;</h3>
+</span>
+<br>
+<hr>
 Top Positive Words :
-<span ng-repeat="positiveWord in wordAnalysis.positive | orderBy : word.appearances | limitTo : 5">
+<span ng-repeat="positiveWord in sentimentalWordsAnalysis.positive | orderBy : word.appearances | limitTo : 5">
    <h3 style="display: inline"> <span class="trends label label-success"> {{positiveWord.word}} </span> &nbsp; </h3>
 </span>
 <hr>
 Top negative Words :
-<span ng-repeat="negativeWord in wordAnalysis.negative | orderBy : negativeWord.appearances | limitTo : 5">
+<span ng-repeat="negativeWord in sentimentalWordsAnalysis.negative | orderBy : negativeWord.appearances | limitTo : 5">
     <h3 style="display: inline"> <span class="trends label label-danger"> {{negativeWord.word}} </span> &nbsp;</h3>
 </span>
 
