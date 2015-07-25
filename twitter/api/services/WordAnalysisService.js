@@ -86,11 +86,30 @@ module.exports = {
 
     countAllWords : function(tweets){
 
+        var pos = require('pos');
+
+
         var allWords = [];
         tweets.forEach(function(tweet){
-                tweet.sentiment.tokens.forEach(function (token) {
-                    allWords.push(token);
-                })
+
+            var words = new pos.Lexer().lex(tweet.text);
+            var taggedWords = new pos.Tagger().tag(words);
+
+            taggedWords.forEach(function(word){
+
+                    if(word[1] == (  "NNP" || "NNPS" || "NNS" )){
+                        if(word[0].length > 2)
+                        {
+                            allWords.push(word[0]);
+                        }
+                    }
+
+
+            });
+                //tweet.sentiment.tokens.forEach(function (token) {
+                //
+                //    allWords.push(token);
+                //})
 
             });
 
