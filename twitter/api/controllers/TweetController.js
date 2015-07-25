@@ -7,18 +7,6 @@
 
 module.exports = {
 
-    getWordNet : function(request, response){
-        var natural = require('natural');
-        var wordnet = new natural.WordNet();
-
-        wordnet.lookup('Happiness', function(results) {
-            results.forEach(function (result) {
-
-            });
-            return response.json(results);
-        })
-
-    },
     getAnalyzedTweets: function (request , response )
     {
         var query = request.param('query');
@@ -29,7 +17,7 @@ module.exports = {
             if(tweets.length >= 1)
             {
                 hasTweetsInDB = true;
-                //getTweets();
+                getTweets();
                 var sentimentalAnalysis =  WordAnalysisService.countSentimentalWords(tweets);
                 var overallAnalysis = SentimentAnalysisService.analyzeAll(tweets);
                 return response.json({
