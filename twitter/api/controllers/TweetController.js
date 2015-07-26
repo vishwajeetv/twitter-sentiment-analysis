@@ -22,7 +22,8 @@ module.exports = {
 
     getAnalyzedTweets: function (request , response )
     {
-        var query = request.param('query');
+        var query = encodeURIComponent(request.param('query'));
+        console.log(query);
 
         var hasTweetsInDB = false;
         var tweets = Tweet.find({'query':query},function(error, tweets) {
@@ -56,7 +57,7 @@ module.exports = {
                 var resultToStore = {};
                  resultToStore[query] = results;
 
-                firebaseRef.set(
+                firebaseRef.update(
                     resultToStore
                 );
 
@@ -70,7 +71,7 @@ module.exports = {
                 stream.on('data', function(tweet) {
                     tweets.push(tweet);
                     console.log(tweet.text);
-                    if(tweets.length == 3)
+                    if(tweets.length == 2)
                     {
                         saveTweets(tweets);
                         tweets = [];
@@ -106,25 +107,8 @@ module.exports = {
 
                 });
                 if(hasTweetsInDB == false) {
-
-                    var sentimentalAnalysis =  WordAnalysisService.countSentimentalWords(tweets);
-                    var overallAnalysis = SentimentAnalysisService.analyzeAll(tweets);
-                    var allWordAnalysis =  WordAnalysisService.countAllWords(tweets);
-
-                    var results = {
-                        overallAnalysis : overallAnalysis,
-                        sentimentalWordsAnalysis : sentimentalAnalysis,
-                        allWordsAnalysis : allWordAnalysis
-                    };
-
-                    var resultToStore = {};
-                    resultToStore[query] = results;
-
-                    firebaseRef.set(
-                        resultToStore
-                    );
-
-                    return response.json(results);
+                    processTweetsFromDB()
+                    //return response.json(processTweetsFromDB());
                 }
             });
         }
