@@ -54,10 +54,14 @@ module.exports = {
             if(tweet.sentiment.score != 0) //skiping neutral tweets
             {
                 numberOfSentimentalTweets++;
-                totalScore = totalScore + tweet.sentiment.score;
+                totalScore = parseInt(totalScore + tweet.sentiment.score);
             }
         });
-        averageScore = totalScore/numberOfSentimentalTweets;
+
+        if(numberOfSentimentalTweets != 0){
+            averageScore = parseFloat(totalScore/numberOfSentimentalTweets);
+        }
+
         var analysis = {
             numberOfTweets : numberOfTweets,
             numberOfSentimentalTweets: numberOfSentimentalTweets,
