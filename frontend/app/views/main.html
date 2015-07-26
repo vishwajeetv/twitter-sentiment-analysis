@@ -22,17 +22,21 @@ Trending :
     </div>
 </div>
 <br>
+
+<div>
 <hr>
 <div class="row">
-    <div class="col-sm-6">Sentiment : {{sentiment}}
+    <div class="col-sm-6">
+        Sentiment : {{tweetsData[searchText].overallAnalysis.sentiment}}
         <br>
-        Number of tweets : {{numberOfTweets}}
+        Number of tweets : {{tweetsData[searchText].overallAnalysis.numberOfTweets}}
         <br>
-        Number of sentimental tweets : {{numberOfSentimentalTweets}}
+        Number of sentimental tweets : {{tweetsData[searchText].overallAnalysis.numberOfSentimentalTweets}}
         <br>
-        Total score : {{totalScore}}
+        Total score : {{tweetsData[searchText].overallAnalysis.totalScore}}
         <br>
-        Average score : {{averageScore}}</div>
+        Average score : {{tweetsData[searchText].overallAnalysis.averageScore}}
+</div>
     <div class="col-sm-6">
 
        <h4> <i ng-class="getSentimentClass()"></i></h4>
@@ -42,19 +46,20 @@ Trending :
 
 <hr>
 Top  Words :
-<span ng-repeat="word in allWordsAnalysis | orderBy : word.appearances | limitTo : 10">
+<span ng-repeat="word in tweetsData[searchText].allWordsAnalysis | orderBy : word.appearances | limitTo : 10">
     <h3 style="display: inline"> <span class="verticalMargined label label-info"> {{word.word}} </span> &nbsp;</h3>
 </span>
 <br>
 <hr>
 Top Positive Words :
-<span ng-repeat="positiveWord in sentimentalWordsAnalysis.positive | limitTo : 8">
+<span ng-repeat="positiveWord in tweetsData[searchText].sentimentalWordsAnalysis.positive | limitTo : 8">
    <h3 style="display: inline"> <span class="verticalMargined label label-success"> {{positiveWord.word}} </span> &nbsp; </h3>
 </span>
 <hr>
 Top negative Words :
-<span ng-repeat="negativeWord in sentimentalWordsAnalysis.negative | limitTo : 8">
+<span ng-repeat="negativeWord in tweetsData[searchText].sentimentalWordsAnalysis.negative | limitTo : 8">
     <h3 style="display: inline; margin-bottom:15px"> <span class="verticalMargined label label-danger"> {{negativeWord.word}} </span> &nbsp;</h3>
 </span>
 
+</div>
 <hr>

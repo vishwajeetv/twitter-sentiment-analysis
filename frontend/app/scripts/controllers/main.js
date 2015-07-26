@@ -8,8 +8,11 @@
  * Controller of the twitterAppApp
  */
 angular.module('twitterAppApp')
-  .controller('MainCtrl', function ($scope, Restangular, TwitterProvider) {
+  .controller('MainCtrl', function ($scope, Restangular, TwitterProvider, $firebaseObject) {
 
+        var ref = new Firebase("https://twittersentiment.firebaseio.com/");
+        var syncObject = $firebaseObject(ref);
+        syncObject.$bindTo($scope, "tweetsData");
       $scope.tweets = {};
       $scope.positiveCount = 0;
       $scope.negativeCount = 0;
@@ -31,45 +34,12 @@ angular.module('twitterAppApp')
             TwitterProvider.getTweets(searchText).then(
             function( tweetsData )
             {
-                $scope.sentimentalWordsAnalysis = tweetsData.sentimentalWordsAnalysis;
-                $scope.allWordsAnalysis = tweetsData.allWordsAnalysis;
-                $scope.numberOfTweets = tweetsData.overallAnalysis.numberOfTweets;
-                $scope.totalScore = tweetsData.overallAnalysis.totalScore;
-                $scope.averageScore = tweetsData.overallAnalysis.averageScore;
-                $scope.numberOfSentimentalTweets = tweetsData.overallAnalysis.numberOfSentimentalTweets;
-
-                var averageScore = $scope.averageScore;
-                $scope.sentiment = calculateSentiment(averageScore);
 
             }
         )
       }
 
-        function calculateSentiment(averageScore)
-        {
-            var sentiment = null;
-            var minimumSentimentIndex = 0.1
-            var highSentimentIndex = 0.80;
-            if(averageScore > minimumSentimentIndex){
-               sentiment = 'Positive';
-                if(averageScore > highSentimentIndex)
-                {
-                    sentiment = 'Very Positive';
-                }
-            }
-            else if( averageScore < -minimumSentimentIndex){
-               sentiment = 'Negative';
-                if(averageScore < -highSentimentIndex)
-                {
-                    sentiment = 'Very Negative';
-                }
-            }
-            else
-            {
-               sentiment = 'Neutral';
-            }
-            return sentiment;
-        }
+
         $scope.trends = {};
         $scope.getTrends = function(locationId)
         {
@@ -80,15 +50,24 @@ angular.module('twitterAppApp')
                     console.log(trends);
                 }
             )
-        }
+        };
 
         $scope.getSentimentClass = function()
         {
-            if(($scope.sentiment == 'Positive') || ($scope.sentiment == 'Very Positive'))
+            if(!$scope.searchText)
+            return null;
+            if(!($scope.tweetsData))
+            return null;
+            if(!$scope.tweetsData[searchText])
+            return null;
+
+            if($scope.tweetsData[$scope.searchText])
+            var sentiment = $scope.tweetsData[$scope.searchText].overallAnalysis.sentiment;
+            if((sentiment == 'Positive') || (sentiment == 'Very Positive'))
             {
                 return 'fa text-success fa-5x fa-smile-o'
             }
-            else if(($scope.sentiment == 'Positive') || ($scope.sentiment == 'Very Positive'))
+            else if((sentiment == 'Positive') || (sentiment == 'Very Positive'))
             {
                 return 'fa text-danger fa-5x fa-frown-o'
             }
@@ -96,10 +75,11 @@ angular.module('twitterAppApp')
             {
                 return 'fa text-warning fa-5x fa-meh-o'
             }
-        }
+        };
+
       function init()
       {
-            //$scope.getTrends(1);
+            $scope.getTrends(1);
       }
 
       init();
