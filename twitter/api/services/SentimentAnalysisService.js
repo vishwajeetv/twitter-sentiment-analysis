@@ -1,6 +1,34 @@
 /**
  * Created by vishwajeetv on 25/07/15.
  */
+
+
+function calculateSentiment(averageScore)
+{
+    var sentiment = null;
+    var minimumSentimentIndex = 0.1;
+    var highSentimentIndex = 0.80;
+    if(averageScore > minimumSentimentIndex){
+        sentiment = 'Positive';
+        if(averageScore > highSentimentIndex)
+        {
+            sentiment = 'Very Positive';
+        }
+    }
+    else if( averageScore < -minimumSentimentIndex){
+        sentiment = 'Negative';
+        if(averageScore < -highSentimentIndex)
+        {
+            sentiment = 'Very Negative';
+        }
+    }
+    else
+    {
+        sentiment = 'Neutral';
+    }
+    return sentiment;
+}
+
 module.exports = {
 
 
@@ -34,8 +62,10 @@ module.exports = {
             numberOfTweets : numberOfTweets,
             numberOfSentimentalTweets: numberOfSentimentalTweets,
             averageScore : averageScore,
-            totalScore : totalScore
-        }
+            totalScore : totalScore,
+            sentiment : calculateSentiment(averageScore)
+        };
+
         return analysis;
     }
 
