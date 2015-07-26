@@ -16,7 +16,7 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-        'restangular'
+        'restangular','firebase'
   ]).
     config(function (RestangularProvider, SERVER_URL) {
       RestangularProvider.setBaseUrl(SERVER_URL);
