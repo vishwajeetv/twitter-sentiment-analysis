@@ -18,7 +18,7 @@ Trending :
 
     </div>
     <div class="col-sm-4">
-        <button class="btn btn-lg btn-primary" ng-click="search(searchText)">Search</button>
+        <button class="btn btn-lg btn-primary" ng-click="search(searchText)">Start !</button>
     </div>
 </div>
 <br>
@@ -27,7 +27,7 @@ Trending :
 <hr>
 <div class="row">
     <div class="col-sm-6">
-        Sentiment : {{tweetsData[searchText].overallAnalysis.sentiment}}
+        <b>Sentiment : {{tweetsData[searchText].overallAnalysis.sentiment}}</b>
         <br>
         Number of tweets : {{tweetsData[searchText].overallAnalysis.numberOfTweets}}
         <br>

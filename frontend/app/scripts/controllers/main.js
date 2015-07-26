@@ -22,7 +22,7 @@ angular.module('twitterAppApp')
 
         $scope.setSearchText = function(text)
         {
-            $scope.searchText = text;
+            $scope.searchText = (text);
         };
 
 
@@ -31,12 +31,14 @@ angular.module('twitterAppApp')
         {
             var searchText = $scope.searchText;
 
-            TwitterProvider.getTweets(searchText).then(
+            TwitterProvider.getTweets((searchText)).then(
             function( tweetsData )
             {
 
+
             }
         )
+            $scope.searchText = encodeURI($scope.searchText);
       }
 
 
@@ -58,7 +60,7 @@ angular.module('twitterAppApp')
             return null;
             if(!($scope.tweetsData))
             return null;
-            if(!$scope.tweetsData[searchText])
+            if(!($scope.tweetsData[$scope.searchText]))
             return null;
 
             if($scope.tweetsData[$scope.searchText])
@@ -67,7 +69,7 @@ angular.module('twitterAppApp')
             {
                 return 'fa text-success fa-5x fa-smile-o'
             }
-            else if((sentiment == 'Positive') || (sentiment == 'Very Positive'))
+            else if((sentiment == 'Negative') || (sentiment == 'Very Negative'))
             {
                 return 'fa text-danger fa-5x fa-frown-o'
             }
