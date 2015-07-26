@@ -92,19 +92,21 @@ module.exports = {
         var allWords = [];
         tweets.forEach(function(tweet){
 
-            var words = new pos.Lexer().lex(tweet.text);
-            var taggedWords = new pos.Tagger().tag(words);
+            if((typeof (tweet.text) === undefined)) {
 
-            taggedWords.forEach(function(word){
 
-                    if(word[1] == (  "NNP" || "NNPS" || "NNS" )){
-                        if(word[0].length > 2)
-                        {
+                var words = new pos.Lexer().lex(tweet.text);
+                var taggedWords = new pos.Tagger().tag(words);
+
+                taggedWords.forEach(function (word) {
+
+                    if (word[1] == (  "NNP" || "NNPS" || "NNS" )) {
+                        if (word[0].length > 2) {
                             allWords.push(word[0]);
                         }
                     }
-            });
-
+                });
+            }
             });
 
         var allWordsAnalysis = analyzeCount(allWords)
