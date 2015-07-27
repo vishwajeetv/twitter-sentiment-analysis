@@ -38,7 +38,7 @@ angular.module('twitterAppApp')
 
             }
         )
-            $scope.searchText = encodeURI($scope.searchText);
+            $scope.searchText = encodeURIComponent(decodeURIComponent($scope.searchText));
       }
 
 
