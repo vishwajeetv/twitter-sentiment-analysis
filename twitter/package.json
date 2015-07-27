@@ -1,10 +1,11 @@
 {
   "name": "twitter-app",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
+    "bluebird": "^2.9.34",
     "ejs": "~0.8.4",
     "firebase": "^2.2.7",
     "forever": "^0.15.0",
@@ -25,7 +26,9 @@
     "sails": "~0.11.0",
     "sails-disk": "~0.10.0",
     "sails-mongo": "^0.11.2",
-    "twitter": "^1.2.5"
+    "sentiment": "^1.0.2",
+    "twitter": "^1.2.5",
+    "natural": "^0.2.1"
   },
   "scripts": {
     "debug": "node debug app.js",
@@ -37,5 +40,10 @@
     "url": "git://github.com/vishwajeetv/twitter.git"
   },
   "author": "vishwajeetv",
-  "license": ""
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vishwajeetv/twitter/issues"
+  },
+  "homepage": "https://github.com/vishwajeetv/twitter#readme",
+  "devDependencies": {}
 }
