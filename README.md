@@ -15,8 +15,9 @@ A novice's implementation of real-time twitter sentiment analysis built with:
 * Run `cd ../frontend && npm install && bower install`
 * Run `grunt serve`
 
-##TODO
+## TODO
 * Daemon to fetch 100 tweets and saving them whenever allowed.
 
-###Notes
+### Notes
 * For production setup, do this `echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p`
+* To install sails, use this `sudo npm install --unsafe-perm --verbose -g sails`
