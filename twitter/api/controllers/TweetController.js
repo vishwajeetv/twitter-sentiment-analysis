@@ -70,7 +70,6 @@ module.exports = {
                 var tweets = [];
                 stream.on('data', function(tweet) {
                     tweets.push(tweet);
-                    console.log(tweet.text);
                     if(tweets.length == 2)
                     {
                         saveTweets(tweets);
