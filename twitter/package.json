@@ -7,6 +7,7 @@
   "dependencies": {
     "ejs": "~0.8.4",
     "firebase": "^2.2.7",
+    "forever": "^0.15.0",
     "grunt": "0.4.2",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-coffee": "~0.10.1",
