@@ -17,3 +17,6 @@ A novice's implementation of real-time twitter sentiment analysis built with:
 
 ##TODO
 * Daemon to fetch 100 tweets and saving them whenever allowed.
+
+###Notes
+* For production setup, do this `echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p`
