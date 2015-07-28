@@ -107,7 +107,7 @@ module.exports = {
                 });
                 if(hasTweetsInDB == false) {
                     processTweetsFromDB()
-                    //return response.json(processTweetsFromDB());
+                    return response.json({'status':'ok'});
                 }
             });
         }
