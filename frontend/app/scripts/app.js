@@ -10,6 +10,7 @@
  */
 angular
   .module('twitterAppApp', [
+        'angular-loading-bar',
     'ngAnimate',
     'ngCookies',
     'ngResource',
