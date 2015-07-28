@@ -28,7 +28,13 @@ angular.module('twitterAppApp')
             var deferred = $q.defer();
             $http.get(url).
                 success(function (data, status, headers, config) {
-                    deferred.resolve(data.trends[0].trends);
+                    if(typeof data != 'undefined')
+                    {
+                        if(!data.error)
+                        {
+                            deferred.resolve(data.trends[0].trends);
+                        }
+                    }
                 }).
                 error(function (data, status, headers, config) {
                     deferred.reject();
