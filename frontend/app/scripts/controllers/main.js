@@ -43,13 +43,18 @@ angular.module('twitterAppApp')
 
 
         $scope.trends = {};
-        $scope.getTrends = function(locationId)
+        $scope.getTrends = function(globalLocationId, localLocationId)
         {
-            TwitterProvider.getTrends(locationId).then(
+            TwitterProvider.getTrends(globalLocationId).then(
                 function( trends )
                 {
-                   $scope.trends = trends;
-                    console.log(trends);
+                   $scope.globalTrends = trends;
+                }
+            )
+            TwitterProvider.getTrends(localLocationId).then(
+                function( trends )
+                {
+                    $scope.localTrends = trends;
                 }
             )
         };
@@ -81,7 +86,7 @@ angular.module('twitterAppApp')
 
       function init()
       {
-            $scope.getTrends(1);
+            $scope.getTrends(1, 23424848);
       }
 
       init();

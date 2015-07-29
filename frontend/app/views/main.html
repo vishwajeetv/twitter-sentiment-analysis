@@ -1,10 +1,18 @@
 
 <div class="btn-group">
 
-Trending :
-    <span ng-repeat="trend in trends">
+Trending Globally :
+    <span ng-repeat="trend in globalTrends">
 
-        <button type="button" class="trend btn btn-sm btn-primary" ng-click="setSearchText(trend.query)"> {{trend.name}}</button>
+        <button type="button" class="trend btn btn-sm btn-default" ng-click="setSearchText(trend.name)"> {{trend.name}}</button>
+        </span>
+
+    <br>
+
+Trending Locally (India) :
+    <span ng-repeat="trend in localTrends">
+
+        <button type="button" class="trend btn btn-sm btn-default" ng-click="setSearchText(trend.name)"> {{trend.name}}</button>
         </span>
 </div>
 <br><br>
