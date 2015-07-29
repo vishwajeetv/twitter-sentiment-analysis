@@ -5,6 +5,7 @@
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
+    "apparatus": "0.0.9",
     "bluebird": "^2.9.34",
     "ejs": "~0.8.4",
     "firebase": "^2.2.7",
@@ -29,7 +30,8 @@
     "sails-disk": "~0.10.0",
     "sails-mongo": "^0.11.2",
     "sentiment": "^1.0.2",
-    "twitter": "^1.2.5"
+    "twitter": "^1.2.5",
+    "underscore": "^1.8.3"
   },
   "scripts": {
     "debug": "node debug app.js",
