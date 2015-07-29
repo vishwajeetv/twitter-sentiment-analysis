@@ -6,8 +6,8 @@
 function calculateSentiment(averageScore)
 {
     var sentiment = null;
-    var minimumSentimentIndex = 0.1;
-    var highSentimentIndex = 0.80;
+    var minimumSentimentIndex = 0.5;
+    var highSentimentIndex = 2;
     if(averageScore > minimumSentimentIndex){
         sentiment = 'Positive';
         if(averageScore > highSentimentIndex)
@@ -35,7 +35,7 @@ module.exports = {
     analyze: function(tweets) {
 
         var sentiment = require('sentiment');
-
+        var favouriteScoreModifier = 10; //number by which favourite count should be divided.
         tweets.forEach(function(tweet)
         {
             tweet.sentiment = sentiment(tweet.text);
@@ -43,7 +43,7 @@ module.exports = {
             if(tweet.favorite_count > 0)
             {
                 tweet.sentiment.score = (tweet.sentiment.score +
-                ((tweet.sentiment.score * tweet.favorite_count)/4));
+                ((tweet.sentiment.score * tweet.favorite_count)/favouriteScoreModifier));
             }
         });
         return tweets;
