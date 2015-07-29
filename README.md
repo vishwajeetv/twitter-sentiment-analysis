@@ -1,5 +1,10 @@
 # twitter-sentiment-analysis
-A novice's implementation of real-time twitter sentiment analysis built with:
+
+A novice's implementation of real-time twitter sentiment analysis.
+
+A working, live demo is available here: http://twitter.vishwajeetv.com/#/
+
+Built with:
 * NodeJS (REST API with Sails.js)
 * MongoDB
 * Twitter API
