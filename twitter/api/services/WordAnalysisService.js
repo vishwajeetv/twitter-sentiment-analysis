@@ -20,7 +20,7 @@ function analyzeCount(words) {
 
         if (hasMatch) {
             if (wordAnalysis[word]) {
-                wordAnalysis[word] = wordAnalysis[word] + 1;
+                wordAnalysis[word] = parseInt(wordAnalysis[word] + 1);
             }
             else {
                 wordAnalysis[word] = 1;
@@ -92,7 +92,7 @@ module.exports = {
         var allWords = [];
         tweets.forEach(function(tweet){
 
-            if((typeof (tweet.text) === undefined)) {
+            if((typeof (tweet.text) !== undefined)) {
 
 
                 var words = new pos.Lexer().lex(tweet.text);
