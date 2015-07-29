@@ -39,6 +39,12 @@ module.exports = {
         tweets.forEach(function(tweet)
         {
             tweet.sentiment = sentiment(tweet.text);
+
+            if(tweet.favorite_count > 0)
+            {
+                tweet.sentiment.score = (tweet.sentiment.score +
+                ((tweet.sentiment.score * tweet.favorite_count)/4));
+            }
         });
         return tweets;
 
