@@ -12,7 +12,7 @@ angular.module('twitterAppApp')
       this.getTweets = function (searchText) {
         var url = SERVER_URL + 'tweet/getAnalyzedTweets/?query='+searchText;
         var deferred = $q.defer();
-        $http.get(url).
+        $http.get(url,  {timeout: 0}).
             success(function (data, status, headers, config) {
               deferred.resolve(data);
             }).

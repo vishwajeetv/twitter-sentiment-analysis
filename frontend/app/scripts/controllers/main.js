@@ -22,6 +22,7 @@ angular.module('twitterAppApp')
 
         $scope.setSearchText = function(text)
         {
+            console.log(text);
             $scope.searchText = (text);
         };
 
