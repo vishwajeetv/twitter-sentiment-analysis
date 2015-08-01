@@ -8,7 +8,7 @@
  * Controller of the twitterAppApp
  */
 angular.module('twitterAppApp')
-  .controller('MainCtrl', function ($scope, Restangular, TwitterProvider, $firebaseObject) {
+  .controller('MainCtrl', function ($scope, Restangular, TwitterProvider, $firebaseObject, toaster) {
 
         var ref = new Firebase("https://twittersentiment.firebaseio.com/");
         var syncObject = $firebaseObject(ref);
@@ -30,16 +30,26 @@ angular.module('twitterAppApp')
         $scope.sentiment = null;
         $scope.search = function()
         {
-            var searchText = $scope.searchText;
-
-            TwitterProvider.getTweets((searchText)).then(
-            function( tweetsData )
+            if( ($scope.searchText == undefined) || ($scope.searchText == ''))
+            {
+                toaster.pop('error', "No Search Query", "Please enter the search query");
+            }
+            else
             {
 
+                $scope.searchText = encodeURIComponent(decodeURIComponent($scope.searchText));
+                var searchText = $scope.searchText;
+
+                TwitterProvider.getTweets((searchText)).then(
+                    function( tweetsData )
+                    {
+                        toaster.pop('success', "Analysis Started", "Enjoy the magic!");
+                    })
 
             }
-        )
-            $scope.searchText = encodeURIComponent(decodeURIComponent($scope.searchText));
+
+
+
       }
 
 
