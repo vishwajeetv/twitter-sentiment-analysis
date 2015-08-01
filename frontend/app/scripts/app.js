@@ -10,6 +10,7 @@
  */
 angular
   .module('twitterAppApp', [
+        'toaster',
         'angular-loading-bar',
     'ngAnimate',
     'ngCookies',
