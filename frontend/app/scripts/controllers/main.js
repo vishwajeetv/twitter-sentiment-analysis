@@ -39,11 +39,11 @@ angular.module('twitterAppApp')
 
                 $scope.searchText = encodeURIComponent(decodeURIComponent($scope.searchText));
                 var searchText = $scope.searchText;
-
+                toaster.pop('success', "Analysis Started", "Enjoy the magic!");
                 TwitterProvider.getTweets((searchText)).then(
                     function( tweetsData )
                     {
-                        toaster.pop('success', "Analysis Started", "Enjoy the magic!");
+
                     })
 
             }
