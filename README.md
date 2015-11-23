@@ -28,3 +28,4 @@ Built with:
 ### Notes
 * For production setup, do this `echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p`
 * To install sails, use this `sudo npm install --unsafe-perm --verbose -g sails`
+* To start the production server, use `forever start app.js --prod`
