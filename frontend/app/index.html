@@ -10,7 +10,6 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
     <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
     <link rel="stylesheet" href="bower_components/angularjs-toaster/toaster.css" />
     <!-- endbower -->
@@ -108,7 +107,18 @@
     <script src="bower_components/angularjs-toaster/toaster.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAhMcdSRJ_g7JUX3nQooeMEZhJWDoHlxpI",
+        authDomain: "test-4073a.firebaseapp.com",
+        databaseURL: "https://test-4073a.firebaseio.com",
+        projectId: "test-4073a",
+        storageBucket: "test-4073a.appspot.com",
+        messagingSenderId: "273815567429"
+      };
+      firebase.initializeApp(config);
+    </script>
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
