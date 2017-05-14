@@ -2,9 +2,11 @@
 
 A novice's implementation of real-time twitter sentiment analysis.
 
-A working, live demo is available here: http://twitter.vishwajeetv.com/#/
+A working, live demo is available here: http://vishwajeetv.com/twitter
 
 Here's an informal blog post explaining how this is built : http://www.vishwajeetv.com/how-did-i-built-real-time-twitter-sentiment-analyser/
+
+Demo Video - https://youtu.be/YEaFMTN4BlU
 
 Built with:
 * NodeJS (REST API with Sails.js)
