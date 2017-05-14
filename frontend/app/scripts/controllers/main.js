@@ -10,7 +10,7 @@
 angular.module('twitterAppApp')
   .controller('MainCtrl', function ($scope, Restangular, TwitterProvider, $firebaseObject, toaster) {
 
-        var ref = new Firebase("https://twittersentiment.firebaseio.com/");
+        var ref = firebase.database().ref().child("data");
         var syncObject = $firebaseObject(ref);
         syncObject.$bindTo($scope, "tweetsData");
       $scope.tweets = {};
