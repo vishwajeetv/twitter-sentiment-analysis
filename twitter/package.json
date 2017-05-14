@@ -8,7 +8,7 @@
     "apparatus": "0.0.9",
     "bluebird": "^2.9.34",
     "ejs": "~0.8.4",
-    "firebase": "^2.2.7",
+    "firebase": "^3.6.6",
     "forever": "^0.15.0",
     "grunt": "0.4.2",
     "grunt-contrib-clean": "~0.5.0",
