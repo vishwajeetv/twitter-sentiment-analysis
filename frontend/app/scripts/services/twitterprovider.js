@@ -12,11 +12,9 @@ angular.module('twitterAppApp')
       this.getTweets = function (searchText) {
         var url = SERVER_URL + 'tweet/getAnalyzedTweets/?query='+searchText;
         var deferred = $q.defer();
-        $http.get(url,  {timeout: 0}).
-            success(function (data, status, headers, config) {
-              deferred.resolve(data);
-            }).
-            error(function (data, status, headers, config) {
+        $http.get(url,  {timeout: 0}).then(function (response, status, headers, config) {
+              deferred.resolve(response.data);
+            },function (response, status, headers, config) {
               deferred.reject();
               console.log("could not retrieve tweets");
             });
@@ -27,16 +25,15 @@ angular.module('twitterAppApp')
             var url = SERVER_URL + 'tweet/getTrends/?location='+locationId;
             var deferred = $q.defer();
             $http.get(url).
-                success(function (data, status, headers, config) {
-                    if(typeof data != 'undefined')
+                then(function (response, status, headers, config) {
+                    if(typeof response.data != 'undefined')
                     {
-                        if(!data.error)
+                        if(!response.data.error)
                         {
-                            deferred.resolve(data.trends[0].trends);
+                            deferred.resolve(response.data.trends[0].trends);
                         }
                     }
-                }).
-                error(function (data, status, headers, config) {
+                },function (data, status, headers, config) {
                     deferred.reject();
                     console.log("could not retrieve tweets");
                 });
