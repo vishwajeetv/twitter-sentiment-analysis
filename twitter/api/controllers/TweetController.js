@@ -12,10 +12,20 @@ var config = {
     "access_token_secret" : sails.config.access_token_secret
 };
 
+var firebase = require('firebase');
+var app = firebase.initializeApp({
+  apiKey: "AIzaSyAhMcdSRJ_g7JUX3nQooeMEZhJWDoHlxpI",
+  authDomain: "test-4073a.firebaseapp.com",
+  databaseURL: "https://test-4073a.firebaseio.com",
+  projectId: "test-4073a",
+  storageBucket: "test-4073a.appspot.com",
+  messagingSenderId: "273815567429"
+});
+
 var Twitter = require('twitter');
 var client = new Twitter(config);
 var Firebase = require("firebase");
-var firebaseRef = new Firebase("https://twittersentiment.firebaseio.com/");
+var firebaseRef =  firebase.database().ref().child("data");
 
 
 module.exports = {
