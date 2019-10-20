@@ -54,22 +54,25 @@ module.exports = {
 
         function processTweetsFromDB() {
             Tweet.find({'query': query}, function (error, tweets) {
+              if(tweets && tweets.length>0){
                 var sentimentalAnalysis = WordAnalysisService.countSentimentalWords(tweets);
                 var overallAnalysis = SentimentAnalysisService.analyzeAll(tweets);
                 var allWordAnalysis = WordAnalysisService.countAllWords(tweets);
 
                 var results = {
-                    overallAnalysis: overallAnalysis,
-                    sentimentalWordsAnalysis: sentimentalAnalysis,
-                    allWordsAnalysis: allWordAnalysis
+                  overallAnalysis: overallAnalysis,
+                  sentimentalWordsAnalysis: sentimentalAnalysis,
+                  allWordsAnalysis: allWordAnalysis
                 };
 
                 var resultToStore = {};
-                 resultToStore[query] = results;
+                resultToStore[query] = results;
 
                 firebaseRef.update(
-                    resultToStore
+                  resultToStore
                 );
+              }
+
 
             })
         }

@@ -62,18 +62,22 @@ module.exports = {
         var negativeWords = [];
         var allWordAnalysis = {};
         tweets.forEach(function(tweet){
-            if(tweet.sentiment.positive.length >= 1) {
+
+            if(tweet && tweet.sentiment){
+              if(tweet.sentiment.positive.length >= 1) {
                 tweet.sentiment.positive.forEach(function (positiveWord) {
-                    positiveWords.push(positiveWord);
+                  positiveWords.push(positiveWord);
                 })
 
-            }
-            if(tweet.sentiment. negative.length >= 1) {
+              }
+              if(tweet.sentiment. negative.length >= 1) {
 
                 tweet.sentiment.negative.forEach(function (negativeWord) {
-                    negativeWords.push(negativeWord);
+                  negativeWords.push(negativeWord);
                 })
+              }
             }
+
         });
         allWordAnalysis.positive = analyzeCount(positiveWords);
         allWordAnalysis.negative = analyzeCount(negativeWords);
