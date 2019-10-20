@@ -87,6 +87,12 @@ body {
     margin-bottom : 2px;
 }
 .verticalMargined{
-  margin-top: 5px;
-  margin-bottom : 5px;
+  margin-top: 4px;
+  margin-bottom : 8px !important;
+}
+.labelstyle{
+  display: inline;
+  font-size: 24px;
+  margin-right: 8px;
+  margin-bottom: 8px !important;
 }
