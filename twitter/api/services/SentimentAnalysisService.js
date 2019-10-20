@@ -29,22 +29,27 @@ function calculateSentiment(averageScore)
     return sentiment;
 }
 
+var Sentiment = require('sentiment');
+var sentiment = new Sentiment();
+
 module.exports = {
 
 
     analyze: function(tweets) {
 
-        var sentiment = require('sentiment');
         var favouriteScoreModifier = 10; //number by which favourite count should be divided.
         tweets.forEach(function(tweet)
         {
-            tweet.sentiment = sentiment(tweet.text);
+            if(tweet && tweet.text){
+              tweet.sentiment = sentiment.analyze(tweet.text);
 
-            if(tweet.favorite_count > 0)
-            {
+              if(tweet.sentiment && tweet.favorite_count && tweet.favorite_count > 0)
+              {
                 tweet.sentiment.score = (tweet.sentiment.score +
-                ((tweet.sentiment.score * tweet.favorite_count)/favouriteScoreModifier));
+                  ((tweet.sentiment.score * tweet.favorite_count)/favouriteScoreModifier));
+              }
             }
+
         });
         return tweets;
 
@@ -57,7 +62,7 @@ module.exports = {
         var numberOfSentimentalTweets = 0;
         tweets.forEach(function(tweet)
         {
-            if(tweet.sentiment.score != 0) //skiping neutral tweets
+            if(tweet && tweet.sentiment && tweet.sentiment.score != 0) //skiping neutral tweets
             {
                 numberOfSentimentalTweets++;
                 totalScore = parseInt(totalScore + tweet.sentiment.score);
