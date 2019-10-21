@@ -2,9 +2,9 @@
 
 A novice's implementation of real-time twitter sentiment analysis.
 
-A working, live demo is available here: http://vishwajeetv.com/twitter
+A working, live demo is available here: https://vishwajeetv.com/twitter
 
-Here's an informal blog post explaining how this is built : http://www.vishwajeetv.com/how-did-i-built-real-time-twitter-sentiment-analyser/
+Here's an informal blog post explaining how this is built : https://www.vishwajeetv.com/how-did-i-built-real-time-twitter-sentiment-analyser/
 
 Demo Video - https://youtu.be/YEaFMTN4BlU
 
